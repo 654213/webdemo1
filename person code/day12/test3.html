@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <script src="./data.js"></script>
+    <style>
+        .item {
+            width: 234px;
+            /* height: 300px; */
+            /* 撑开来 */
+            padding: 40px 0;
+            background-color: #ddd;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px #999;
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .pic {
+            /* 预先写高度，后面要改 */
+            width: 180px;
+            height: 180px;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+        
+        .pic img {
+            /* 清除图片幽灵 */
+            display: block;
+            width: 100%;
+        }
+        
+        .item h4 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        /* 高级选择器 */
+        
+        ul .item:nth-child(4n) {
+            margin-right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pokes">
+        <div class="center">
+            <ul id="poke" class="clearFloat">
+
+
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 实际上不要这么写，这是模拟
+        var pokedata = data;
+        console.log(pokedata);
+        //找到url
+        var poke = document.getElementById('poke');
+        //空变量:遍历的时候把每一次遍历的内容都加载这个空变量里
+        var str = "";
+        //往url加东西之前要遍历数据，并且把遍历好的给空变量
+        for (var i = 0; i < pokedata.length; i++) {
+            // console.log(pokedata[i]);
+            str += ` <li class="item">
+                    <!-- 弄一个pic为了让它有一个背景白色 -->
+                    <div class="pic">
+                        <img src="./img/${pokedata[i].id}.png" alt="">
+                    </div>
+                    <h4>${pokedata[i].id}</h4>
+                </li>`;
+        }
+        //往url里加内容
+        poke.innerHTML = str;
+    </script>
+</body>
+
+</html>
